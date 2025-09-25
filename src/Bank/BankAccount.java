@@ -1,9 +1,12 @@
 package Bank;
+import java.util.Random;
 
 public class BankAccount {
-    private  int balance;
+    private  double balance;
     private int accountNumber;
     private String accountHolder;
+    private static int counter = 1000;
+
     public BankAccount(){};
     public String getAccountHolder(){
         return this.accountHolder;
@@ -19,23 +22,27 @@ public class BankAccount {
     public void setBalance(int balance){
         this.balance=balance;
     }
-    public int getBalance(){
+    public double getBalance(){
         return this.balance;
     }
     public void setAccountHolder(String accountHolder ) {
         this.accountHolder = accountHolder;
     }
 
-    public BankAccount(String accountHolder,int balance,int accountNumber){
+    public BankAccount(String accountHolder){
         this.accountHolder=accountHolder;
         this.balance=0;
-        this.accountNumber=accountNumber;
+        this.accountNumber=counter++;
     }
-    public int deposit (int depoAmmount){
-        return this.getBalance()+ depoAmmount;
+    public void deposit (double depoAmmount){
+        balance+=depoAmmount;
     }
-    public int withdraw (int withAmmount){
-        return this.getBalance()+ withAmmount;
+    public void withdraw (int withAmmount){
+        if(withAmmount<=balance) {
+            balance-= withAmmount;
+        }else{
+            System.out.println("Your balance is short");
+        };
     }
     public String toString(){
         return "{ Account Holder: "+getAccountHolder()+ ",\n" +
