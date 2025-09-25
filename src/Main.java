@@ -9,7 +9,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the preferred account holder name: ");
         String name=sc.nextLine();
-
+        System.out.println("Enter your PIN:");
+        int  pin = sc.nextInt();
         BankAccount account1=new BankAccount();
         account1.setAccountHolder(name);
         BankAccount account2=new BankAccount();
