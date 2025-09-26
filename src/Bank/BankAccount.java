@@ -44,6 +44,10 @@ public class BankAccount {
             System.out.println("Your balance is short");
         };
     }
+    public void applyInterest(double rate) {
+        double interest = balance * (rate / 100);
+        balance += interest;
+    }
     public String toString(){
         return "{ Account Holder: "+getAccountHolder()+ ",\n" +
                 "Account Number: "+getAccountNumber()+",\n"+
