@@ -1,4 +1,7 @@
 package Bank;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class BankAccount {
@@ -6,6 +9,7 @@ public class BankAccount {
     private int accountNumber;
     private String accountHolder;
     private static int counter = 1000;
+    List <String> transactions =new ArrayList<>();
 
     public BankAccount(){};
     public String getAccountHolder(){
@@ -29,18 +33,20 @@ public class BankAccount {
         this.accountHolder = accountHolder;
     }
 
-    public BankAccount(String accountHolder){
-        this.accountHolder=accountHolder;
-        this.balance=0;
-        this.accountNumber=counter++;
+    public BankAccount(String accountHolder, double balance) {
+        this.accountHolder = accountHolder;
+        this.balance = balance;
+        this.accountNumber = counter++;
+        this.transactions = new ArrayList<>(); // start empty
     }
     public void deposit (double depoAmmount){
         balance+=depoAmmount;
+        transactions.add("Deposited " + depoAmmount + " FRW on " + LocalDate.now());
     }
     public void withdraw (int withAmmount){
         if(withAmmount<=balance) {
             balance-= withAmmount;
-            System.out.println("You have successfully withdrawn "+withAmmount+" FRW.");
+            transactions.add("Withdrew " + withAmmount + " FRW on " + LocalDate.now());
         }else{
             System.out.println("Your balance is short");
         };
@@ -51,6 +57,7 @@ public class BankAccount {
             balance-=ammount;
             receiver.balance +=ammount;
             System.out.println("Transfer successfull");
+            transactions.add("Transferred " + ammount + " FRW to account " + receiver.getAccountNumber() + " on " + LocalDate.now());
         }else{
             System.out.println("Your balance is insufficient.Please deposit more to transfer.");
         }
