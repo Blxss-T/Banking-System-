@@ -44,6 +44,18 @@ public class BankAccount {
             System.out.println("Your balance is short");
         };
     }
+    public void bankTransit(int ammount, BankAccount receiver){
+
+        if(balance >=0){
+            balance-=ammount;
+            receiver.balance +=ammount;
+            System.out.println("Transfer successfull");
+        }else{
+            System.out.println("Your balance is insufficient.Please deposit more to transfer.");
+        }
+
+
+    }
     public void applyInterest(double rate) {
         double interest = balance * (rate / 100);
         balance += interest;
@@ -52,6 +64,8 @@ public class BankAccount {
         return "{ Account Holder: "+getAccountHolder()+ ",\n" +
                 "Account Number: "+getAccountNumber()+",\n"+
                 "Balance: "+getBalance()+"}";
+
+
     }
 
 }
