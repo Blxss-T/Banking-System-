@@ -40,6 +40,7 @@ public class BankAccount {
     public void withdraw (int withAmmount){
         if(withAmmount<=balance) {
             balance-= withAmmount;
+            System.out.println("You have successfully withdrawn "+withAmmount+" FRW.");
         }else{
             System.out.println("Your balance is short");
         };
