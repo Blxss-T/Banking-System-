@@ -10,6 +10,7 @@ public class BankAccount {
     private String accountHolder;
     private static int counter = 1000;
     List <String> transactions =new ArrayList<>();
+    private double dailyLimit = 50000;
 
     public BankAccount(){};
     public String getAccountHolder(){
@@ -76,6 +77,16 @@ public class BankAccount {
             for (String t : transactions) {
                 System.out.println("- " + t);
             }
+        }
+    }
+    public void withdraw(double amount) {
+        if (amount > dailyLimit) {
+            System.out.println("Withdrawal failed: exceeds daily limit of " + dailyLimit + " FRW");
+        } else if (amount <= balance) {
+            balance -= amount;
+            transactions.add("Withdrew " + amount + " FRW on " + LocalDate.now());
+        } else {
+            System.out.println("Your balance is short");
         }
     }
     public String toString(){
