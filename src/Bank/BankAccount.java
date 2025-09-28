@@ -68,6 +68,16 @@ public class BankAccount {
         double interest = balance * (rate / 100);
         balance += interest;
     }
+    public void printTransactionHistory() {
+        if (transactions.isEmpty()) {
+            System.out.println("No transactions yet.");
+        } else {
+            System.out.println("Transaction History:");
+            for (String t : transactions) {
+                System.out.println("- " + t);
+            }
+        }
+    }
     public String toString(){
         return "{ Account Holder: "+getAccountHolder()+ ",\n" +
                 "Account Number: "+getAccountNumber()+",\n"+
